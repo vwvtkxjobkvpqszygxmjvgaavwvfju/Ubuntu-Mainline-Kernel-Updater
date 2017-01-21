@@ -260,11 +260,11 @@ if [ -d /lib/modules/$VER_A-<?php echo ($l?'lowlatency':'generic'); ?> ];then
 		fi
 	fi
 	if [ "$action" == "y" ];then
-		sudo apt-get purge linux-{image-extra,headers,image}-$VER_C-<?php echo ($l?'lowlatency':'generic'); ?> linux-headers-$VER_C
+		sudo apt-get purge -y linux-{image-extra,headers,image}-$VER_C-<?php echo ($l?'lowlatency':'generic'); ?> linux-headers-$VER_C
 		if [ $(dpkg-query -l "linux-image-extra-$VER_C-<?php echo ($l?'lowlatency':'generic'); ?>" > /dev/null 2>&1;echo $?) -eq 0 ];then
-			sudo apt-get purge linux-{image-extra,headers,image}-$VER_A-<?php echo ($l?'lowlatency':'generic'); ?> linux-headers-$VER_C
+			sudo apt-get purge -y linux-{image-extra,headers,image}-$VER_A-<?php echo ($l?'lowlatency':'generic'); ?> linux-headers-$VER_C
 		else
-			sudo apt-get purge linux-{headers,image}-$VER_C-<?php echo ($l?'lowlatency':'generic'); ?> linux-headers-$VER_C
+			sudo apt-get purge -y linux-{headers,image}-$VER_C-<?php echo ($l?'lowlatency':'generic'); ?> linux-headers-$VER_C
 		fi
 	fi
 else
