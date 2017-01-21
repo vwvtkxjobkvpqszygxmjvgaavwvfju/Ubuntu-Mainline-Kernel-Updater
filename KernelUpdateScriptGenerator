@@ -253,7 +253,11 @@ if [ -d /lib/modules/$VER_A-<?php echo ($l?'lowlatency':'generic'); ?> ];then
 		echo -e "\nWARNING: If the new kernel does not boot you may regret saying yes here.\nWould you like to remove the current one? (y=Yes, n=No) (n)"
 		read action
 	else
-		action="n"
+		if [ $auto -eq 1 ];then
+			action="y"
+		else
+			action="n"
+		fi
 	fi
 	if [ "$action" == "y" ];then
 		sudo apt-get purge linux-{image-extra,headers,image}-$VER_C-<?php echo ($l?'lowlatency':'generic'); ?> linux-headers-$VER_C
